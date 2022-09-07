@@ -61,4 +61,21 @@ public class UserDaoImpl implements UserDao {
 
         return userId;
     }
+
+    @Override
+    public void updateUser(Integer userId, UserRequest userRequest) {
+        String sql = "UPDATE user SET user_name = :userName, user_image_url = :userImageUrl, user_description = :userDescription" +
+                ", last_modified_date = :lastModifiedDate " +
+                "WHERE user_id = :userId";
+        Map<String, Object> map = new HashMap<>();
+
+        map.put("userId", userId);
+        map.put("userName", userRequest.getUserName());
+        map.put("userImageUrl", userRequest.getUserImageUrl());
+        map.put("userDescription", userRequest.getUserDescription());
+        map.put("lastModifiedDate", new Date());
+
+        namedParameterJdbcTemplate.update(sql, map);
+
+    }
 }

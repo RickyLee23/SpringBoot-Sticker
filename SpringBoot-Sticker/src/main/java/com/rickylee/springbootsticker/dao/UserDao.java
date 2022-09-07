@@ -6,4 +6,5 @@ import com.rickylee.springbootsticker.model.User;
 public interface UserDao {
     User getUser(Integer userId);
     Integer createUser(UserRequest userRequest);
+    void updateUser(Integer userId, UserRequest userRequest);
 }
