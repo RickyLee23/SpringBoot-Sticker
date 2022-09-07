@@ -1,13 +1,14 @@
 package com.rickylee.springbootsticker.controller;
 
+import com.rickylee.springbootsticker.dto.UserRequest;
 import com.rickylee.springbootsticker.model.User;
 import com.rickylee.springbootsticker.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 @RestController
 public class UserController {
@@ -24,5 +25,15 @@ public class UserController {
         } else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
+    }
+
+    @PostMapping("/user")
+    public ResponseEntity<User> createProduct(@RequestBody @Valid UserRequest userRequest) {
+        Integer userId = userService.createUser(userRequest);
+
+        User user = userService.getUser(userId);
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(user);
+
     }
 }

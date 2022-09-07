@@ -4,12 +4,12 @@ import java.util.Date;
 
 public class User {
 
+    private Integer userId;
     private String userName;
     private String userImageUrl;
     private String userDescription;
     private Date createdDate;
     private Date lastModifiedDate;
-    private Integer userId;
 
     public Integer getUserId() {
         return userId;
