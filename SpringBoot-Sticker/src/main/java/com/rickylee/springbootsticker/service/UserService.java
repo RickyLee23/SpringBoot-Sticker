@@ -8,4 +8,5 @@ public interface UserService {
     User getUser(Integer userId);
     Integer createUser(UserRequest userRequest);
     void updateUser(Integer userId, UserRequest userRequest);
+    void deleteUser(Integer userId);
 }

@@ -52,4 +52,12 @@ public class UserController {
 
         return ResponseEntity.status(HttpStatus.OK).body(updatedUser);
     }
+
+    @DeleteMapping("/user/{userId}")
+    public ResponseEntity<User> deleteUser(@PathVariable Integer userId) {
+
+        userService.deleteUser(userId);
+
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    }
 }

@@ -76,6 +76,15 @@ public class UserDaoImpl implements UserDao {
         map.put("lastModifiedDate", new Date());
 
         namedParameterJdbcTemplate.update(sql, map);
+    }
 
+    @Override
+    public void deleteUser(Integer userId) {
+        String sql = "DELETE FROM user WHERE user_id = :userId";
+
+        Map<String, Object> map = new HashMap<>();
+        map.put("userId", userId);
+
+        namedParameterJdbcTemplate.update(sql, map);
     }
 }
